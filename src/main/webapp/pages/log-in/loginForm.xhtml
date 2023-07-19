@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <h:outputStylesheet name="primeflex/3.3.1/primeflex.css" library="webjars"/>
+        <style>
+            *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; 
+
+}
+
+body{
+    background: rgb(252, 250, 250);
+}
+.navbar{
+    background: #fff;
+    display: flex;
+    border-radius: 8px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;   
+    padding: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .navbar h4{
+    font-size: 1.3em;
+    border-bottom: 4px solid var(--blue);
+    font-style: italic;
+  }
+  .links ul{
+    display: flex;
+    gap: 15px;
+    list-style-type: none;
+  }
+  .logo img{
+    height: 100px;
+    width: 160px;
+  }
+  .links ul li a{
+    color: #000;
+    text-decoration: none;
+    border-bottom: 3px solid #4169E1;
+    border-radius: 4px;
+    padding: 5px;
+  }
+  .links ul li a:hover{
+    background: #008CBA;
+    color: #fff;
+  }
+.form-box{
+    width: 550px;
+    position: absolute;
+    top: 30%; 
+    left: 50%;
+    background: #fff;
+    padding: 50px 60px 70px;
+    text-align: center;
+    transform: translate(-50%,-20%);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+
+
+}
+.form-box h1{
+    font-size: 30px;
+    margin-bottom: 60px;
+    position: relative;
+    color: #4169E1;
+}
+.form-box h1::after{
+    content: '';
+    width: 30px;
+    height: 4px;
+    border-radius: 3px;
+    background: #4169E1;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.input-field{
+    background:rgb(252, 250, 250);
+    margin: 15px 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    
+    border:2px solid #4169E1;
+}
+.input-field input{
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 15px 15px;
+    
+   
+}
+.input-field i{
+    margin-left: 15px;
+    color: #999;
+    
+}
+form p{
+    text-align: left;
+    font-size: 13px;
+}
+form p a{
+    text-decoration: none;
+    color: #3c0000;
+}
+.btn-field{
+    width: 100%;
+    padding: 15px;
+}
+.btn-field .button{
+    background: #4169E1;
+    color: #fff;
+    border-radius: 4px;
+    padding: 15px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: 1s;
+    text-decoration: none;
+    
+}
+
+        </style>
+    </f:facet>
+</h:head>
+<h:body>
+    <f:view>
+        
+        
+                    <div class="container">
+                        <div class="form-box">
+                            <p:graphicImage library="images" name="mylogo.png" alt="image not there" style="height: 100px; width: 250px;" />
+                            <h1>Login</h1>
+                            <h:form>
+                            <div class="input-group">
+                                <div class="input-field">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <p:inputText class="input"  placeholder="Email" value="#{loginForm.user.userName}" />
+                                </div>
+
+                                <div class="input-field">
+                                    <i class="fa-solid fa-lock"></i>
+                                    <p:inputText class="input"  placeholder="Password" value="#{loginForm.user.password}"/>
+                            
+                                </div>
+                            </div>
+                            <div class="btn-field">
+                                <!-- <a href="../dashboard/Dashboard.xhtml" class="button" >Log In</a> -->
+                                <p:commandButton value="Log In" action="#{loginForm.doLogin()}"/>
+                            </div>
+                        </h:form>
+                        </div>
+                    </div>
+                
+    </f:view>
+</h:body>
+</html>

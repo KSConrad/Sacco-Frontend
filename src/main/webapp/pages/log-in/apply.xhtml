@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<h:head>
+   <f:facet name="first">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+      <h:outputStylesheet name="primeflex/3.3.1/primeflex.css" library="webjars"/>
+   </f:facet>
+
+
+</h:head>
+
+
+<h:body>
+  <h1 style="text-align: center; color:#4169E1">Registration</h1>
+   <div class="card flex justify-content-center">
+
+      <f:view>
+         <div class="w-9 h-auto border-50  surface-ground shadow-1 p-2 border-round-sm">
+            <h:form>
+
+
+                  <div>
+                     <h3>Personal Details</h3>
+                  </div>
+
+            <div class="formgrid grid">
+               <div class="field col-12 md:col-6 ">
+                  <label for="firstname6">First Name</label>
+                  <input id="firstname6" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+               </div>
+               <div class="field col-12 md:col-6 ">
+                  <label for="lastname6">Last Name</label>
+                  <input id="lastname6" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+               </div>
+               <div class="field col-12 md:col-6">
+                  <label for="location">Location</label>
+                  <input id="location" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+               </div>
+               <div class="field col-12 md:col-3">
+                  <label for="date">Date of Birth</label>
+                  <input id="date" type="date" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto"/>
+               </div>
+               <div class="field col-12">
+                  <div class="field">
+                     <label for="email">Email</label>
+                     <input id="email" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+               </div>
+               <div class="field col-12 md:col-6">
+                  <label for="city">Telephone Contact</label>
+                  <input id="city" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+               </div>
+               <div class="field col-12 md:col-3">
+                  <label for="state">Gender</label>
+                  <select id="state" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+                     <option>Male</option>
+                     <option>Female</option>   
+                  </select>
+               </div>
+
+
+
+            </div>
+
+               <p:divider/>
+            <div>
+               <h3>Financial Details</h3>
+            </div>
+
+               <div class="formgrid grid">
+                  <div class="field col-12 md:col-6 ">
+                     <label for="bank">Bank Name</label>
+                     <input id="bank" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+                  <div class="field col-12 md:col-6 ">
+                     <label for="account">Account Number</label>
+                     <input id="account" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+
+                  <div class="field col-12 md:col-6 ">
+                     <label for="income">Source of Income</label>
+                     <input id="income" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+                  <div class="field col-12 md:col-3">
+                     <label for="option">Type of Account</label>
+                     <select id="option" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+                        <option>Student</option>
+                        <option>Regular</option>
+                     </select>
+                  </div>
+
+               <div class="field col-12 md:col-6">
+                <p:button value="Submit"/>
+                     <p:button value="Back to Home" outcome="#{navigation.home}"/>
+
+               </div>
+            </div>
+         </h:form>
+         </div>
+
+      </f:view>
+   </div>
+
+
+</h:body>
+
+</html>

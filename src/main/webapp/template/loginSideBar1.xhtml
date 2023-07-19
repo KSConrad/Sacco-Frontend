@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+<h:head>
+    <h:outputStylesheet name="css/App.css"/>
+      
+</h:head>
+
+<h:body>
+    <p:card style="width: 15rem; height: 35rem; border-radius: 8%;position:fixed;top:120px;">
+                <div style="display: flex; flex-direction: column; height: 100%;">
+                    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                        <p:graphicImage library="images" name="profile2.png" alt="Profile Image" style="height: 100px; width: 100px;" />
+                        
+                     
+                           
+      
+                          
+                    </div>
+                  <div style="display: grid; grid-template-rows: 1fr 1fr 1fr; gap: 1rem;margin-top: 30%; margin-bottom: 1rem;">
+                    
+                    <span style="display: flex; align-items: center;">
+                      <p:graphicImage library="images" name="home.png" alt="image not there" style="height: 50px; width: 50px;" />
+                      <a href="Dashboard.xhtml" class="button-like-text">Dashboard</a>
+
+                    </span>
+              
+                    <span style="display: flex; align-items: center;">
+                      <p:graphicImage library="images" name="transaction.png" alt="image not there" style="height: 50px; width: 50px;" />
+                      <a href="transaction.xhtml" class="button-like-text">Make a transaction</a>
+
+                    </span>
+              
+                    <span style="display: flex; align-items: center;">
+                      <p:graphicImage library="images" name="loan.png" alt="image not there" style="height: 50px; width: 50px;" />
+                      <a href="loan.xhtml" class="button-like-text">Apply for a loan</a>
+
+                    </span>
+                    <span style="display: flex; align-items: center;">
+                        <p:graphicImage library="images" name="history.png" alt="image not there" style="height: 50px; width: 50px;" />
+                        <a href="history.xhtml" class="button-like-text">Transaction History</a>
+
+                      </span>
+
+                      
+                  </div>
+              
+                  
+                </div>
+              </p:card>
+              
+            
+      
+    </h:body>
+</html>
