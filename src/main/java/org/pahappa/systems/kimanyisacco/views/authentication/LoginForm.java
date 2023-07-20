@@ -1,6 +1,8 @@
 package org.pahappa.systems.kimanyisacco.views.authentication;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -51,5 +53,11 @@ public User getUser(){
     System.out.println("mybaseurl:"+context);
     FacesContext.getCurrentInstance().getExternalContext().redirect(context+HyperLinks.dashboard);
      userImpl.createUser(user) ; 
+     List <User> result = new java.util.ArrayList<>();
+    result =userImpl.getAllUsers();
+
+    for(User users:result){
+      System.out.println(users.getUserName());
+    }
   }
 }
