@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<h:head>
+   <f:facet name="first">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+      <h:outputStylesheet name="primeflex/3.3.1/primeflex.css" library="webjars"/>
+   </f:facet>
+
+
+</h:head>
+
+
+<h:body>
+ 
+   <div class="card flex justify-content-center">
+
+      <f:view>
+         <div class="w-9 h-auto border-50  surface-ground shadow-1 p-2 border-round-sm">
+            <h:form>
+
+
+                  <div>
+                     <h3 style="color:#4169E1">Personal Details</h3>
+                  </div>
+
+            <div class="formgrid grid">
+               <div class="field col-12 md:col-6 ">
+                  <label for="firstname6">First Name</label>
+                  <input id="firstname6" type="text" value="Daniella" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+               </div>
+               <div class="field col-12 md:col-6 ">
+                  <label for="lastname6">Last Name</label>
+                  <input id="lastname6" value="Caden" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+               </div>
+               <div class="field col-12 md:col-6">
+                  <label for="location">Location</label>
+                  <input id="location" value="Kimwanyi" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+               </div>
+               <div class="field col-12 md:col-3">
+                  <label for="date">Date of Birth</label>
+                  <input id="date" type="date" value="07/09/2001" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto"/>
+               </div>
+               <div class="field col-12">
+                  <div class="field">
+                     <label for="email">Email</label>
+                     <input id="email" value="daniella.wwcd@gmail.com" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+               </div>
+               <div class="field col-12 md:col-6">
+                  <label for="city">Telephone Contact</label>
+                  <input id="city" type="text" value ="0752225226" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/> 
+               </div>
+               <div class="field col-12 md:col-3">
+                  <label for="state">Gender</label>
+                  <select id="state" value="Female" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+                       
+                  </select>
+               </div>
+
+
+
+            </div>
+
+               <p:divider/>
+            <div>
+               <h3 style="color:#4169E1">Financial Details</h3>
+            </div>
+
+               <div class="formgrid grid">
+                  <div class="field col-12 md:col-6 ">
+                     <label for="bank">Bank Name</label>
+                     <input id="bank" value="Stanbic Bank" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+                  <div class="field col-12 md:col-6 ">
+                     <label for="account">Account Number</label>
+                     <input id="account" value="9030017238349934" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+
+                  <div class="field col-12 md:col-6 ">
+                     <label for="income">Source of Income</label>
+                     <input id="income" value="Self Employment" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+                  <div class="field col-12 md:col-3">
+                     <label for="option">Type of Account</label>
+                     <select id="option" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+                        <option>Student</option>
+                        <option>Regular</option>
+                     </select>
+                  </div>
+
+               
+            </div>
+            <p:divider/>
+            <div>
+               <h3 style="color:#4169E1">Employment Details</h3>
+            </div>
+
+               <div class="formgrid grid">
+                  <div class="field col-12 md:col-6 ">
+                     <label for="bank">Current Employment</label>
+                     <input id="bank" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+                  <div class="field col-12 md:col-6 ">
+                     <label for="account">Employer Name</label>
+                     <input id="account" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+
+                  <div class="field col-12 md:col-6 ">
+                     <label for="income">Employer Phone Number</label>
+                     <input id="income" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+                  <div class="field col-12 md:col-6">
+                     <label for="option">Job Position</label>
+                     <input id="income" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+
+                  <h3 style="color:#4169E1">Income Details</h3>
+                </div>
+    
+                   <div class="formgrid grid">
+                     
+                      <div class="field col-12 md:col-6 ">
+                         <label for="bank">Monthly Salary</label>
+                         <input id="bank" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                      </div>
+                      <div class="field col-12 md:col-6 ">
+                         <label for="account">Sources of Income</label>
+                         <input id="account" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                      </div>
+    
+                      
+                      
+            </div>
+
+               <div class="formgrid grid">
+               
+            <div class="field col-12 md:col-6">
+                <p:commandButton style="color:#4169E1" value="Approve"/>
+               </div>
+            </div>
+         </h:form>
+         </div>
+
+      </f:view>
+   </div>
+
+
+</h:body>
+
+</html>

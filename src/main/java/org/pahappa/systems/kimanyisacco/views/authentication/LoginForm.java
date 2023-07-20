@@ -9,29 +9,47 @@ import javax.faces.context.FacesContext;
 
 import org.pahappa.systems.kimanyisacco.controllers.HyperLinks;
 import org.pahappa.systems.kimanyisacco.models.User;
+import org.pahappa.systems.kimanyisacco.services.UserImpl;
 
 @ManagedBean(name = "loginForm")
 @ViewScoped
 public class LoginForm {
 private User user;
+UserImpl userImpl = new UserImpl();
+public User getUser(){
+        return user;
+    }
 
-    public void setUser(User user) {
-    this.user = user;
-}
+ public void  setUser(User user){
+      this.user=user;
+    }   
 
     public LoginForm(){
         this.user=new User();
         
+    
     }
 
-    public User getUser(){
-        return user;
+    public void init(){
+      this.user= new User();
     }
+
+    
+
+     
+    
+
+    
+
+    
+
 
   public void doLogin() throws IOException{
-    // System.out.println("mybaseurl:");
+   
+    System.out.println(user.getPassword());
    String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
     System.out.println("mybaseurl:"+context);
     FacesContext.getCurrentInstance().getExternalContext().redirect(context+HyperLinks.dashboard);
+     userImpl.createUser(user) ; 
   }
 }

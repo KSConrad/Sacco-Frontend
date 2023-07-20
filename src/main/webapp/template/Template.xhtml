@@ -30,7 +30,14 @@
         <!-- Include the sidebar content -->
         <ui:include src="../template/loginSideBar1.xhtml" />
     </ui:insert>
-
+    <ui:insert name="adminSideBar">
+        <!-- Include the sidebar content -->
+        <ui:include src="../template/adminSidebar.xhtml" />
+    </ui:insert>
+    <ui:insert name="adminHeader">
+        <!-- Include the sidebar content -->
+        <ui:include src="../template/adminHeader.xhtml" />
+    </ui:insert>
     <div id="main">
         <!-- Main content of the page goes here -->
         <ui:insert name="content"></ui:insert>

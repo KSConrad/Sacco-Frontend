@@ -16,6 +16,11 @@ public class Navigation {
 
 private final String landing = "/pages/landing/Landing.xhtml";
  private final String home = "/pages/log-in/home.xhtml";
+ private final String approve = "/pages/admin/approve.xhtml";
+    public String getApprove() {
+    return approve;
+}
+
     public String getDashboard() {
         return dashboard;
     }

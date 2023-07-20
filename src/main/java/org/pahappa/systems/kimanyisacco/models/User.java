@@ -1,15 +1,38 @@
 package org.pahappa.systems.kimanyisacco.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="users")
 public class User{
     
-        private String userName;
+	
+		private long id;
+
+		@Id
+		@GeneratedValue(strategy=GenerationType.AUTO)
+		@Column(name="userId",nullable=false)
+        public long getId() {
+			return id;
+		}
+		public void setId(long id) {
+			this.id = id;
+		}
+		private String userName;
+		private String password;
+
+		
+
+		@Column(name="userName",nullable=false,length=255)
         public String getUserName() {
 			return userName;
 		}
 		public void setUserName(String userName) {
 			this.userName = userName;
 		}
-		private String password;
+		
+
+		@Column(name="password",nullable=false,length=255)
 		public String getPassword() {
 			return password;
 		}
@@ -17,9 +40,7 @@ public class User{
 			this.password = password;
 		}
 
-    public void display(){
-        System.out.println(userName + password);
-    }
+    
 
 
 }
