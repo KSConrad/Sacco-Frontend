@@ -49,6 +49,18 @@ public List<Members> getJoinRequests(){
 
  public void updateStatus(long id){
     memberDAO.updateStatus(id);
- }   
+ }  
+ 
+ public boolean checkUserCredentials(String userName,String password){
+    Members memberByCredentials = memberDAO.getMemberByCredentials(userName,password);
+    if(memberByCredentials==null){
+        return false;
+    }
+
+else{
+    return true;
+}
+   
+ }
     
 }

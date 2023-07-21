@@ -64,6 +64,31 @@ public void updateStatus(long id){
 
 }
 
+public Members getMemberByCredentials(String userName,String password){
+    
+    try  {
+        Session session = SessionConfiguration.getSessionFactory().openSession();
+        
+        Criteria criteria = session.createCriteria(Members.class);
+        criteria.add(Restrictions.eq("userName", userName));
+        criteria.add(Restrictions.eq("password", password));
+        criteria.add(Restrictions.eq("status", "APPROVED"));
+        return (Members) criteria.uniqueResult();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
 
 }
+
+// public Members getMemberByEmail(String email){
+   
+//     }
+
+
+
+}
+
+
+
 
