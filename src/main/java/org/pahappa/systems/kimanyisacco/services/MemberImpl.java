@@ -42,4 +42,13 @@ public class MemberImpl  {
     public List<Members> getAllMembers(){
         return memberDAO.getAllMembers();
     }
+
+public List<Members> getJoinRequests(){
+        return memberDAO.getJoinRequests();
+    }
+
+ public void updateStatus(long id){
+    memberDAO.updateStatus(id);
+ }   
+    
 }

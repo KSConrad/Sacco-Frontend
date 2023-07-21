@@ -30,5 +30,40 @@ public class AddMember {
       
 
 }
+  public List<Members> getJoinRequests(){
+        
+        Session session = SessionConfiguration.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Members.class);
+        criteria.add(Restrictions.eq("status", "PENDING"));
+
+
+        return criteria.list();
+    
+      
+
+}
+
+public void updateStatus(long id){
+    Transaction transaction = null;
+    try{
+    Session session = SessionConfiguration.getSessionFactory().openSession();
+    transaction = session.beginTransaction();
+    Members member = (Members) session.get(Members.class,id);
+
+    
+    member.setStatus("APPROVED");
+
+    
+    session.update(member);
+    transaction.commit();
+    }catch(Exception ex) {
+        if (transaction != null) {
+            transaction.rollback();
+        }
+    }
+
+}
+
+
 }
 

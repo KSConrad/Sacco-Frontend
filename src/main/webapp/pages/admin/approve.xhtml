@@ -20,7 +20,7 @@
 
 
 <h:body>
- 
+  <h1 style="text-align: center; color:#4169E1">Application Form</h1>
    <div class="card flex justify-content-center">
 
       <f:view>
@@ -35,34 +35,35 @@
             <div class="formgrid grid">
                <div class="field col-12 md:col-6 ">
                   <label for="firstname6">First Name</label>
-                  <input id="firstname6" type="text" value="Daniella" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  <p:inputText id="firstname6" type="text" value="#{admin.memberResult.firstName}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                </div>
                <div class="field col-12 md:col-6 ">
                   <label for="lastname6">Last Name</label>
-                  <input id="lastname6" value="Caden" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  <p:inputText id="lastname6" value="#{admin.memberResult.lastName}" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                </div>
                <div class="field col-12 md:col-6">
                   <label for="location">Location</label>
-                  <input id="location" value="Kimwanyi" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  <p:inputText id="location" type="text" value="#{admin.memberResult.location}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                </div>
                <div class="field col-12 md:col-3">
                   <label for="date">Date of Birth</label>
-                  <input id="date" type="date" value="07/09/2001" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto"/>
+                  <p:inputText id="date" type="date" value="#{admin.memberResult.dateOfBirth}" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto"/>
                </div>
                <div class="field col-12">
                   <div class="field">
                      <label for="email">Email</label>
-                     <input id="email" value="daniella.wwcd@gmail.com" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                     <p:inputText id="email" type="text" value="#{admin.memberResult.email}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                   </div>
                </div>
                <div class="field col-12 md:col-6">
                   <label for="city">Telephone Contact</label>
-                  <input id="city" type="text" value ="0752225226" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/> 
+                  <p:inputText id="city" type="text" value="#{admin.memberResult.telephoneContact}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                </div>
                <div class="field col-12 md:col-3">
                   <label for="state">Gender</label>
-                  <select id="state" value="Female" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
-                       
+                  <select id="state" value="#{admin.memberResult.gender}" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+                     <option>Male</option>
+                     <option>Female</option>   
                   </select>
                </div>
 
@@ -70,35 +71,6 @@
 
             </div>
 
-               <p:divider/>
-            <div>
-               <h3 style="color:#4169E1">Financial Details</h3>
-            </div>
-
-               <div class="formgrid grid">
-                  <div class="field col-12 md:col-6 ">
-                     <label for="bank">Bank Name</label>
-                     <input id="bank" value="Stanbic Bank" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
-                  </div>
-                  <div class="field col-12 md:col-6 ">
-                     <label for="account">Account Number</label>
-                     <input id="account" value="9030017238349934" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
-                  </div>
-
-                  <div class="field col-12 md:col-6 ">
-                     <label for="income">Source of Income</label>
-                     <input id="income" value="Self Employment" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
-                  </div>
-                  <div class="field col-12 md:col-3">
-                     <label for="option">Type of Account</label>
-                     <select id="option" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
-                        <option>Student</option>
-                        <option>Regular</option>
-                     </select>
-                  </div>
-
-               
-            </div>
             <p:divider/>
             <div>
                <h3 style="color:#4169E1">Employment Details</h3>
@@ -107,20 +79,20 @@
                <div class="formgrid grid">
                   <div class="field col-12 md:col-6 ">
                      <label for="bank">Current Employment</label>
-                     <input id="bank" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                     <p:inputText id="currentEmployment" type="text" value="#{admin.memberResult.currentEmployment}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                   </div>
                   <div class="field col-12 md:col-6 ">
-                     <label for="account">Employer Name</label>
-                     <input id="account" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                     <label for="employerName">Employer Name</label>
+                     <p:inputText id="employerName" type="text" value="#{admin.memberResult.employerName}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                   </div>
 
                   <div class="field col-12 md:col-6 ">
                      <label for="income">Employer Phone Number</label>
-                     <input id="income" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                     <p:inputText id="employerPhoneNumber" type="text" value="#{admin.memberResult.employerPhoneNumber}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                   </div>
                   <div class="field col-12 md:col-6">
                      <label for="option">Job Position</label>
-                     <input id="income" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                     <p:inputText  id="position" type="text" value="#{admin.memberResult.jobPosition}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                   </div>
 
                   <h3 style="color:#4169E1">Income Details</h3>
@@ -130,23 +102,42 @@
                      
                       <div class="field col-12 md:col-6 ">
                          <label for="bank">Monthly Salary</label>
-                         <input id="bank" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                         <p:inputText id="bank" type="text" value="#{admin.memberResult.monthlySalary}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                       </div>
                       <div class="field col-12 md:col-6 ">
                          <label for="account">Sources of Income</label>
-                         <input id="account" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                         <p:inputText id="account" type="text" value="#{admin.memberResult.sourcesOfIncome}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                       </div>
     
                       
-                      
+                      <h3 style="color:#4169E1">Referees</h3>
             </div>
 
                <div class="formgrid grid">
+                  <div class="field col-12 md:col-6 ">
+                     <label for="bank">Name</label>
+                     <p:inputText id="refereeName" value="#{admin.memberResult.refereeName}" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+                  <div class="field col-12 md:col-6 ">
+                     <label for="refereePhoneNumber">Phone Number</label>
+                     <p:inputText id="refereePhoneNumber" value="#{admin.memberResult.refereePhoneNumber}" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+
+                  
+                  <div class="field col-12 md:col-3">
+                     <label for="option">Job Position</label>
+                     <p:inputText id="refereePosition" type="text" value="#{admin.memberResult.jobPosition}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>    
+
                
-            <div class="field col-12 md:col-6">
-                <p:commandButton style="color:#4169E1" value="Approve"/>
-               </div>
             </div>
+
+
+            <div class="field col-12 md:col-6">
+               <p:commandButton value="Approve" action="#{admin.Approve(admin.memberResult.id)}"/>
+                <!-- <p:button value="Back Dasboard" outcome="#{navigation.dashboard}"/> -->
+
+              </div>
          </h:form>
          </div>
 
