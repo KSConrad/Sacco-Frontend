@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 
 import org.pahappa.systems.kimanyisacco.models.Transactions;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.Date;
@@ -29,6 +30,33 @@ public class Dashboard {
     private  List<Transactions> history;
     private Members memberDetails;
     private Members updatedDetails;
+    private  String oldPassword;
+    private String newPassword;
+    private String confirmPassword;
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
+    }
+
+    public String getNewPassword() {
+        return newPassword;
+    }
+
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     private boolean telephoneEditable = false;
       public boolean isTelephoneEditable() {
         return telephoneEditable;
@@ -235,23 +263,38 @@ String context = FacesContext.getCurrentInstance().getExternalContext().getReque
         System.out.println("mybaseurl:"+context);
         FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/dashboard/Dashboard.xhtml");   
     
-      }
+      } 
 
-  public void viewTransactions()throws IOException{
+  public List<Transactions> viewTransactions()throws IOException{
  FacesContext facesContext = FacesContext.getCurrentInstance();
         ExternalContext externalContext = facesContext.getExternalContext();
         HttpSession session = (HttpSession) externalContext.getSession(false);
         String userEmail = (String) session.getAttribute("userName");
 
-        history = transImpl.getHistory(userEmail);
+        return transImpl.getHistory(userEmail);
 
-         String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
-        System.out.println("mybaseurl:"+context);
-        FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/dashboard/history.xhtml");   
+        //  String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
+        // System.out.println("mybaseurl:"+context);
+        // FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/dashboard/history.xhtml");   
     
 
 
   }    
+
+  public void changePassword() throws IOException{
+
+     FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = facesContext.getExternalContext();
+        HttpSession session = (HttpSession) externalContext.getSession(false);
+        String userEmail = (String) session.getAttribute("userName");
+    memberImpl.changePassword(oldPassword,newPassword,confirmPassword,userEmail);
+    FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Password changes saved successfully!", null);
+        FacesContext.getCurrentInstance().addMessage(null, message);
+        String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
+        System.out.println("mybaseurl:"+context);
+        FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/dashboard/profile.xhtml");  
+
+  }
     
     
 

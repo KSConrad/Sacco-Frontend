@@ -6,6 +6,7 @@ package org.pahappa.systems.kimanyisacco.services;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.pahappa.systems.kimanyisacco.daos.AddMember;
 import org.pahappa.systems.kimanyisacco.daos.AddUser;
 import org.pahappa.systems.kimanyisacco.models.Members;
@@ -24,8 +25,9 @@ public class MemberImpl  {
 
 
         if (member.getPassword() == null || member.getPassword().trim().isEmpty()) {
+            String hashedPassword = hashPassword(member.getEmail());
             // If password is empty or null, set it to the generated ID
-            member.setPassword(member.getEmail());
+            member.setPassword(hashedPassword);
         }
 
         if (member.getUserName() == null || member.getUserName().trim().isEmpty()) {
@@ -42,6 +44,13 @@ public class MemberImpl  {
         memberDAO.save(member);
       
     }
+public static String hashPassword(String plainPassword) {
+        // Generate a salt and hash the password
+        String salt = BCrypt.gensalt();
+        String hashedPassword = BCrypt.hashpw(plainPassword, salt);
+        return hashedPassword;
+    }
+
 
     public List<Members> getAllMembers(){
         return memberDAO.getAllMembers();
@@ -111,13 +120,41 @@ public Members getMemberByUsername(String userName){
  }  
  
  public Members checkUserCredentials(String userName,String password){
-    Members memberByCredentials = memberDAO.getMemberByCredentials(userName,password);
+    Members memberByCredentials = memberDAO.getMemberByCredentials(userName);
+    String storedPassword = memberByCredentials.getPassword();
+    boolean passwordMatches = BCrypt.checkpw(password, storedPassword);
   
-    
+    if(passwordMatches){
+       return memberByCredentials;
+    }
 
 
-    return memberByCredentials;
+    else{
+        return null;
+    }
    
  }
+
+ public void changePassword(String old,String newPass,String confirm,String userName){
+
+    Members passwordCheck = memberDAO.getMemberByCredentials(userName);
+String storedPassword = passwordCheck.getPassword();
+    boolean passwordMatches = BCrypt.checkpw(old, storedPassword);
+    if(passwordMatches){
+        if(newPass.equals(confirm))
+        {
+             String hashedPassword = hashPassword(newPass);
+            // If password is empty or null, set it to the generated ID
+            memberDAO.updatePassword(hashedPassword,userName);
+        }
+        else{
+            System.out.println("Different");
+        }
+        System.out.println("Done");
+    }
+
+
+ }
+ 
     
 }

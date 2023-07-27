@@ -116,14 +116,14 @@ public void updateMember(Members updatedDetails){
 
 }
 
-public Members getMemberByCredentials(String userName,String password){
+public Members getMemberByCredentials(String userName){
     
     try  {
         Session session = SessionConfiguration.getSessionFactory().openSession();
         
         Criteria criteria = session.createCriteria(Members.class);
         criteria.add(Restrictions.eq("userName", userName));
-        criteria.add(Restrictions.eq("password", password));
+        
         criteria.add(Restrictions.eq("status", "APPROVED"));
         return (Members) criteria.uniqueResult();
     } catch (Exception e) {
@@ -133,7 +133,26 @@ public Members getMemberByCredentials(String userName,String password){
 
 }
 
+public void updatePassword(String password, String userName){
+     Transaction transaction = null;
+    try{
+    Session session = SessionConfiguration.getSessionFactory().openSession();
+    transaction = session.beginTransaction();
+    Members member = (Members) session.get(Members.class,userName);
 
+    
+    member.setPassword(password);
+
+    
+    session.update(member);
+    transaction.commit();
+    }catch(Exception ex) {
+        if (transaction != null) {
+            transaction.rollback();
+        }
+    }
+
+}
 
 // public Members getMemberByEmail(String email){
    

@@ -76,17 +76,11 @@ public Members getMember(){
     
     }
 
-  public void viewJoin() throws IOException{
+  public List<Members> viewJoin() throws IOException{
     
-    result =memberImpl.getJoinRequests(); 
+    return memberImpl.getJoinRequests(); 
     
-    String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
-    System.out.println("mybaseurl:"+context);
-    FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/admin/joinRequests.xhtml");
-
-for(Members member:result){
-    System.out.println(member.getFirstName());
-}   
+    
   }
 
   
@@ -111,20 +105,20 @@ for(Members member:result){
 
   }
 
-  public void viewRequests() throws IOException{
+  public List<Transactions> viewRequests() throws IOException{
     
-   withdraws=transImpl.getWithdrawalRequests();
+   return transImpl.getWithdrawalRequests();
     
     
-    String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
-    System.out.println("mybaseurl:"+context);
-    FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/admin/withdrawalRequests.xhtml");
+    // String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
+    // System.out.println("mybaseurl:"+context);
+    // FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/admin/withdrawalRequests.xhtml");
 
-for(Transactions t:withdraws){
-    System.out.println(t.getMember().getFirstName());
-     System.out.println(t.getCreatedOn());
+// for(Transactions t:withdraws){
+//     System.out.println(t.getMember().getFirstName());
+//      System.out.println(t.getCreatedOn());
 
-}   
+// }   
   }
 
   public void viewWithdrawal(Transactions memberTransaction) throws IOException{
