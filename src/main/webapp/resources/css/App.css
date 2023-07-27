@@ -261,7 +261,7 @@ form p a{
   background: #fff;
   padding: 2rem;
   border-radius: 10px;
-  overflow-y:auto;
+  
 }
 .card--wrapper{
   display: flex;

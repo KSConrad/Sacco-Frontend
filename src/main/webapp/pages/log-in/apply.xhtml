@@ -59,12 +59,15 @@
                   <label for="city">Telephone Contact</label>
                   <p:inputText id="city" type="text" value="#{registration.member.telephoneContact}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                </div>
+              
+
                <div class="field col-12 md:col-3">
-                  <label for="state">Gender</label>
-                  <select id="state" value="#{registration.member.gender}" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
-                     <option value="male">Male</option>
-                     <option value="female">Female</option>   
-                  </select>
+                  <h:outputLabel for="state" value="Gender"/>
+                  <h:selectOneMenu id="state" value="#{registration.member.gender}" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+                     <f:selectItem itemValue="Male" itemLabel="Male"/>
+                     <f:selectItem itemValue="Female" itemLabel="Female"/>
+        
+                  </h:selectOneMenu>
                </div>
 
 

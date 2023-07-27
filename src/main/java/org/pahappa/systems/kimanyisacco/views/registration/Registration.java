@@ -23,7 +23,7 @@ public Members getMember(){
         return member;
     }
 
- public void  setMembers(Members member){
+ public void  setMember(Members member){
       this.member=member;
     }   
 

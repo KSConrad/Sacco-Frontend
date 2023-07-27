@@ -16,8 +16,9 @@
     <p:card style="width: 15rem; height: 35rem; border-radius: 8%;position:fixed;top:120px;">
                 <div style="display: flex; flex-direction: column; height: 100%;">
                     <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 1rem;">
+                      <p:commandLink action="#{dashboard.viewProfile()}">
                         <p:graphicImage library="images" name="profile2.png" alt="Profile Image" style="height: 100px; width: 100px;" />
-                        
+                      </p:commandLink>
                      
                            
       
@@ -43,7 +44,8 @@
                     </span>
                     <span style="display: flex; align-items: center;">
                         <p:graphicImage library="images" name="history.png" alt="image not there" style="height: 50px; width: 50px;" />
-                        <a href="history.xhtml" class="button-like-text">Transaction History</a>
+                        <p:commandLink value="Transaction History" action="#{dashboard.viewTransactions()}" class="button-like-text"/>
+                       
 
                       </span>
 

@@ -67,43 +67,30 @@
     <p:card style="width: 35rem; height: 25rem; border-radius: 8%;position:fixed;top:200px;margin-left: 320px;overflow-y:auto;">  
     <h1 style="color:#4169E1;text-align: center;">Notifications</h1>
 <div class="card-container">
-  <div style="display:flex;gap: 10px;">
-    <div class="message-card">
-      <div class="message">Your withdraw of UGX10,000,000 has been approved</div>
-      <div class="date-sent">Sent on July 15, 2023</div>
-    </div>
-    <p:commandButton value="Withdraw" styleClass="ui-button-success" style="width:100px;height:50px;"/>
-  </div>
-
-  <div style="display:flex;gap: 10px;">
-    <div class="message-card">
-      <div class="message">Your withdraw of UGX5,000,000 has been approved</div>
-      <div class="date-sent">Sent on July 19, 2023</div>
-    </div>
-    <p:commandButton value="Withdraw" styleClass="ui-button-success" style="width:100px;height:50px;"/>
-  </div>
-
-  <div style="display:flex;gap: 10px;">
-    <div class="message-card">
-      <div class="message">Your withdraw of UGX5,000,000 has been approved</div>
-      <div class="date-sent">Sent on July 19, 2023</div>
-    </div>
-    <p:commandButton value="Withdraw" styleClass="ui-button-success" style="width:100px;height:50px;"/>
-  </div>
-    
-  </div>
-       
-</p:card>
-
-</p:card>
-
-                 
-</div>
-<div>
-
-</div>
-    </h:form>              
-</h:body>
   
-
+    <p:dataTable var="message" value="#{dashboard.result}">
+      
+     
+        <!-- <p:column>
+          <div class="date-sent">Sent on July 15, 2023</div>
+</p:column> -->
+       <p:column>
+        <div style="display:flex;gap: 10px;">
+            <div class="message-card">
+                <div class="message">
+                    #{message.notifications}
+                </div>
+                <div class="date-sent">Sent on #{message.createdOn}</div>
+            </div>
+            <p:commandButton value="Withdraw" styleClass="ui-button-success" style="width:100px;height:50px;"  action="#{dashboard.doWithdraw(message)}"  rendered="#{message.status ne 'REJECTED'}"/>
+        </div>
+      </p:column> 
+    
+    </p:dataTable>
+</div>
+</p:card>
+</p:card>
+</div>
+</h:form>              
+</h:body>
 </html>

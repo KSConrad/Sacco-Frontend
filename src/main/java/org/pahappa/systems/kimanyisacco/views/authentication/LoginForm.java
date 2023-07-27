@@ -1,6 +1,7 @@
 package org.pahappa.systems.kimanyisacco.views.authentication;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -19,13 +20,67 @@ import org.hibernate.cfg.Configuration;
 import org.pahappa.systems.kimanyisacco.controllers.HyperLinks;
 import org.pahappa.systems.kimanyisacco.daos.AddMember;
 import org.pahappa.systems.kimanyisacco.models.Members;
+import org.pahappa.systems.kimanyisacco.models.Transactions;
 import org.pahappa.systems.kimanyisacco.services.MemberImpl;
+import org.pahappa.systems.kimanyisacco.services.TransactionsImpl;
 
 @ManagedBean(name = "loginForm")
-@ViewScoped
+@SessionScoped
 public class LoginForm {
 private Members member;
+private Members memberResult;
+private String formattedBalance;
+private String formattedTransactionType;
+private Transactions recentTransaction;
 MemberImpl memberImpl = new MemberImpl();
+TransactionsImpl transImpl = new TransactionsImpl();
+
+public String getFormattedBalance() {
+  return formattedBalance;
+}
+
+public void setFormattedBalance(String formattedBalance) {
+  this.formattedBalance = formattedBalance;
+}
+
+public String getFormattedTransactionType() {
+  return formattedTransactionType;
+}
+
+public void setFormattedTransactionType(String formattedTransactionType) {
+  this.formattedBalance = formattedTransactionType;
+}
+
+public Members getMemberResult() {
+  return memberResult;
+}
+
+public void setMemberResult(Members memberResult) {
+  this.memberResult = memberResult;
+}
+
+public Transactions getRecentTransaction() {
+  return recentTransaction;
+}
+
+public void setRecentTransaction(Transactions recentTransaction) {
+  this.recentTransaction = recentTransaction;
+}
+
+
+private double accountBalance;
+public double getAccountBalance() {
+  return accountBalance;
+}
+
+public void setAccountBalance(double accountBalance) {
+  this.accountBalance = accountBalance;
+}
+
+
+
+
+
 public Members getMember(){
         return member;
     }
@@ -38,7 +93,8 @@ public Members getMember(){
 
      
       this.member=new Members();
-      
+       this.memberResult=new Members();
+       this.recentTransaction= new Transactions();
         
     
     }
@@ -47,12 +103,22 @@ public Members getMember(){
       this.member= new Members();
     }
 
+
     
 
   public void doLogin() throws IOException{
+   
+    
     System.out.println(member.getUserName());
-   boolean userExists=memberImpl.checkUserCredentials(member.getUserName(),member.getPassword());
-   if(userExists){
+   memberResult=memberImpl.checkUserCredentials(member.getUserName(),member.getPassword());
+   recentTransaction = transImpl.getRecent(member.getUserName());
+   if(memberResult!=null){
+      DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+       formattedBalance = decimalFormat.format(memberResult.getAccountBalance());
+      formattedTransactionType =decimalFormat.format(recentTransaction.getAmount()) ;
+System.out.println(formattedBalance );
+
+
 
     FacesContext facesContext = FacesContext.getCurrentInstance();
      ExternalContext externalContext = facesContext.getExternalContext();
@@ -65,22 +131,7 @@ public Members getMember(){
    FacesContext.getCurrentInstance().getExternalContext().redirect(context+HyperLinks.dashboard);
    }
 
-    // System.out.println(member.getUserName());
-    // boolean userExists = memberImpl.checkUserCredentials(member.getUserName(), member.getPassword());
-    // if(userExists){
-    //       // Set the logged-in user's email in the session for later use
-    //       FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("loggedInUserEmail", member.getEmail());
-    //       return "Dashboard?faces-redirect=true";
-
-    // }
-
-    // else{
-    //            // Show an error message if login fails
-    //            FacesContext.getCurrentInstance().addMessage(null,
-    //            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Invalid credentials", null));
-    //    return null;
    
-    // }
 
   }
     
@@ -90,18 +141,5 @@ public Members getMember(){
     
 
 
-  // public void doLog() throws IOException{
-   
-  //   System.out.println(user.getPassword());
-  //  String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
-  //   System.out.println("mybaseurl:"+context);
-  //   FacesContext.getCurrentInstance().getExternalContext().redirect(context+HyperLinks.dashboard);
-  //    userImpl.createUser(user) ; 
-  //    List <User> result = new java.util.ArrayList<>();
-  //   result =userImpl.getAllUsers();
-
-  //   for(User users:result){
-  //     System.out.println(users.getUserName());
-  //   }
-  // }
+  
 }

@@ -61,10 +61,9 @@
                </div>
                <div class="field col-12 md:col-3">
                   <label for="state">Gender</label>
-                  <select id="state" value="#{admin.memberResult.gender}" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
-                     <option>Male</option>
-                     <option>Female</option>   
-                  </select>
+                  <p:inputText id="state" value="#{admin.memberResult.gender}" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto"/>
+                      
+                 
                </div>
 
 
@@ -134,7 +133,7 @@
 
 
             <div class="field col-12 md:col-6">
-               <p:commandButton value="Approve" action="#{admin.Approve(admin.memberResult.id)}"/>
+               <p:commandButton value="Approve" action="#{admin.Approve(admin.memberResult.userName,admin.memberResult.firstName)}"/>
                 <!-- <p:button value="Back Dasboard" outcome="#{navigation.dashboard}"/> -->
 
               </div>

@@ -1,9 +1,10 @@
 package org.pahappa.systems.kimanyisacco.models;
 
 import java.time.LocalDate;
+import java.util.List;
+
 
 import javax.persistence.*;
-
 @Entity
 @Table(name = "members")
 public class Members {
@@ -40,18 +41,22 @@ public class Members {
 
     // Constructors
     // Getters and Setters
-
-Members member;
     
-		@Id
-		@GeneratedValue(strategy=GenerationType.AUTO)
-		@Column(name="memberId",nullable=false)
-        public long getId() {
-			return id;
-		}
-		public void setId(long id) {
-			this.id = id;
-		}
+// @OneToMany(fetch = FetchType.LAZY)
+// private  List<Transactions> transactions;
+
+// Constructors, getters, setters, and additional methods as needed
+
+// Getter and Setter for transactions
+// public List<Transactions> getTransactions() {
+//     return transactions;
+// }
+
+// public void setTransactions( List<Transactions> transactions) {
+//     this.transactions = transactions;
+// }
+
+
 
     @Column(name = "firstName", nullable = false)
     public String getFirstName() {
@@ -62,7 +67,8 @@ Members member;
         this.firstName = firstName;
     }
 
-    @Column(name = "userName", nullable = true)
+    @Id
+    @Column(name = "userName", nullable = false)
      public String getUserName() {
         return userName;
     }
@@ -235,6 +241,9 @@ Members member;
 
     public void setRefereeJobPosition(String refereeJobPosition) {
         this.refereeJobPosition = refereeJobPosition;
+    }
+
+    public void updateNotification(String userName2, int i) {
     }
 
     // Constructors if needed

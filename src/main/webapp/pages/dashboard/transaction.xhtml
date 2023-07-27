@@ -60,20 +60,20 @@
 
             <div class="formgrid grid">
                <div class="field col-12 md:col-6 ">
-                  <label for="firstname6">Amount</label>
-                  <input id="firstname6" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  <h:outputLabel for="firstname6" value="Amount"/>
+                  <p:inputText value="#{dashboard.trans.amount}" id="firstname6"  class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                </div>
               
                
                
                
                <div class="field col-12 md:col-3">
-                  <label for="state">Type of Transaction</label>
-                  <select id="state" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
-                     <option>Deposit</option>
-                     <option>Withdraw</option>
+                  <h:outputLabel for="state" value="Type of Transaction"/>
+                  <h:selectOneMenu id="state" value="#{dashboard.trans.transactionType}" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+                     <f:selectItem itemValue="deposit" itemLabel="Deposit"/>
+                     <f:selectItem itemValue="withdraw" itemLabel="Withdraw"/>
         
-                  </select>
+                  </h:selectOneMenu>
                </div>
 
 
@@ -83,7 +83,7 @@
                <p:divider/>
             
             <div class="field col-12 md:col-6">
-               <p:button value="Submit" style="background-color:#4169E1" outcome="#{navigation.dashboard}"/>
+               <p:commandButton value="Submit" style="background-color:#4169E1" action="#{dashboard.doTransaction()}"/>
                 <!-- <p:button value="Back Dasboard" outcome="#{navigation.dashboard}"/> -->
 
               </div>

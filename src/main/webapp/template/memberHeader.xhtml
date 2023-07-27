@@ -20,11 +20,11 @@
         
         <!-- <span class="notification-badge">   <h:outputText value="#{notifications.getNotificationsCount()}" /></span>
         <p:graphicImage library="images" name="notifications2.png" alt="image not there" style="height: 40px; width: 40px; margin-right: 24px;" /> -->
-        <a href="notifications.xhtml" style="color:black;">
-        <p:badge severity="danger" value="#{navigation.getNotificationsCount()} ">
+        <p:commandLink  action="#{dashboard.viewNotifications()}" class="button-like-text">
+        <p:badge severity="danger" value="#{navigation.getNotificationsCount()}">
          <i class="pi pi-bell mb-3 " style="font-size: 2rem;"/>
-     </p:badge>
-    </a>
+     </p:badge> 
+    </p:commandLink>
      <div>
         <p:graphicImage library="images" name="logIn.png" alt="image not there" style="height: 45px; width: 45px;" />
         <div class="mb-1">

@@ -11,7 +11,9 @@ import javax.faces.context.FacesContext;
 
 import org.pahappa.systems.kimanyisacco.controllers.HyperLinks;
 import org.pahappa.systems.kimanyisacco.models.Members;
+import org.pahappa.systems.kimanyisacco.models.Transactions;
 import org.pahappa.systems.kimanyisacco.services.MemberImpl;
+import org.pahappa.systems.kimanyisacco.services.TransactionsImpl;
 import org.pahappa.systems.kimanyisacco.services.UserImpl;
 
 @ManagedBean(name = "admin")
@@ -19,7 +21,16 @@ import org.pahappa.systems.kimanyisacco.services.UserImpl;
 public class AdminDashboard {
 private Members member;
 private Members memberResult; 
+private Transactions memberTransaction;
+public Transactions getMemberTransaction() {
+  return memberTransaction;
+}
+
+public void setMemberTransactions(Transactions memberTransactions) {
+  this.memberTransaction = memberTransaction;
+}
 MemberImpl memberImpl = new MemberImpl();
+TransactionsImpl transImpl = new TransactionsImpl();
 public Members getMember(){
         return member;
     }
@@ -28,7 +39,16 @@ public Members getMember(){
       this.member=member;
     }   
     // Add this field to hold the result
-    private List<Members> result; // Add this property
+    private List<Members> result; 
+    private List<Transactions> withdraws;// Add this property
+
+    public List<Transactions> getWithdraws() {
+      return withdraws;
+    }
+
+    public void setWithdraws(List<Transactions> withdrawResult) {
+      this.withdraws = withdrawResult;
+    }
 
     public List<Members> getResult() {
         return result;
@@ -51,13 +71,13 @@ public Members getMember(){
     public AdminDashboard(){
         this.member=new Members();
         this.memberResult=new Members();
+        this.memberTransaction=new Transactions();
         
     
     }
 
   public void viewJoin() throws IOException{
     
-   
     result =memberImpl.getJoinRequests(); 
     
     String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
@@ -81,14 +101,51 @@ for(Members member:result){
     FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/admin/approve.xhtml");
   }
 
-  public void Approve(long id) throws IOException{
-    System.out.println(id);
-    memberImpl.updateStatus(id);
+  public void Approve(String userName,String firstName) throws IOException{
+    System.out.println(userName);
+    memberImpl.updateStatus(userName);
+    memberImpl.sendApprovalEmail(userName,firstName);
     String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
     System.out.println("mybaseurl:"+context);
     FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/admin/adminDashboard.xhtml");   
 
   }
+
+  public void viewRequests() throws IOException{
+    
+   withdraws=transImpl.getWithdrawalRequests();
+    
+    
+    String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
+    System.out.println("mybaseurl:"+context);
+    FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/admin/withdrawalRequests.xhtml");
+
+for(Transactions t:withdraws){
+    System.out.println(t.getMember().getFirstName());
+     System.out.println(t.getCreatedOn());
+
+}   
+  }
+
+  public void viewWithdrawal(Transactions memberTransaction) throws IOException{
+    this.memberTransaction = memberTransaction;
+    String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
+    System.out.println("mybaseurl:"+context);
+    FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/admin/approveWithdrawals.xhtml");
+
+  }
+
+  public void approveWithdrawal(String userName,int id,String decision) throws IOException{
+    System.out.println(userName);
+    transImpl.updateStatus(id,decision);
+    String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
+    System.out.println("mybaseurl:"+context);
+    FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/admin/adminDashboard.xhtml");   
+
+  }
+
+
+
  }
 
 

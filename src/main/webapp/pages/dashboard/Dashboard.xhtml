@@ -121,14 +121,14 @@
 
 <p:card style="width: 76rem; height: 35rem; border-radius: 8%;position:fixed;top:120px;right:8px;">
    
-<div class="card--container">
+
     
     <div class="card--wrapper">
         <div class="payment--card light-red">
             <div class="card--header">
                 <div class="amount">
                     <span class="amount--value">
-                        Ush 20,000,000
+                     UGX #{loginForm.formattedBalance} 
                     </span>
                     <span class="title">
                         Account balance
@@ -144,10 +144,10 @@
             <div class="card--header">
                 <div class="amount">
                     <span class="amount--value">
-                        Ush 2,300,550
+                      #{loginForm.recentTransaction.transactionType}:<br/>UGX#{loginForm.formattedTransactionType}
                     </span>
                     <span class="title">
-                        Recent transaction
+                        Recent transaction 
                     </span>
                     
                 </div>
@@ -170,7 +170,7 @@
             
         </div>
     </div>
-</div>
+
        
 <!-- <div class="card">
     <p:dataTable var="user" value="#{userView.users}">

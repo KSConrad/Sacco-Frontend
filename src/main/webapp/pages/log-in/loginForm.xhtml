@@ -97,8 +97,9 @@ body{
     border-radius: 8px;
     display: flex;
     align-items: center;
+
     
-    border:2px solid #4169E1;
+    border:3px solid #4169E1;
 }
 .input-field input{
     width: 100%;
@@ -152,20 +153,23 @@ form p a{
                             <h1>Login</h1>
                             <h:form>
                             <div class="input-group">
-                                <div class="input-field">
-                                    <i class="fa-solid fa-envelope"></i>
-                                    <p:inputText class="input"  placeholder="Email" value="#{loginForm.member.userName}" />
-                                </div>
+                                                               
+                                    <p:inputText class="input" style="border: 2px solid #4169E1; border-radius: 8px;" styleClass="w-24rem mb-3" placeholder="Email" value="#{loginForm.member.userName}"/>
+                               
 
-                                <div class="input-field">
-                                    <i class="fa-solid fa-lock"></i>
-                                    <p:inputText class="input"  placeholder="Password" value="#{loginForm.member.password}"/>
-                            
-                                </div>
+                                
+
+                               
+
+                                    <p:inputText  class="input" style="border: 2px solid #4169E1; border-radius: 8px;" type="password"  styleClass="w-24rem mb-3" togglemask = "true" redisplay="true" placeholder="Password" value="#{loginForm.member.password}" />
+                               
+                                    
+                               
+                                
                             </div>
                             <div class="btn-field">
                                 <!-- <a href="../dashboard/Dashboard.xhtml" class="button" >Log In</a> -->
-                                <p:commandButton value="Log In" action="#{loginForm.doLogin()}"/>
+                                <p:commandButton value="Log In" style="background-color:#4169E1;" action="#{loginForm.doLogin()}"/>
                             </div>
                         </h:form>
                         </div>
