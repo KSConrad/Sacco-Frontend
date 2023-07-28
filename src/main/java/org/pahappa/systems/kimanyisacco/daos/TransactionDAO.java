@@ -18,9 +18,9 @@ import org.hibernate.criterion.Disjunction;
 import javax.persistence.criteria.JoinType;
 public class TransactionDAO {
 
-    public void save(Transactions trans){
+    public boolean save(Transactions trans){
 
-       
+       boolean bal = true;
         Transaction transaction = null;
         try{
             double accountBal=0;
@@ -32,12 +32,32 @@ public class TransactionDAO {
             System.out.println("Current:"+member.getAccountBalance());
             System.out.println("Current:"+member.getUserName());
 
+            
+
             if(trans.getTransactionType().equals("deposit")){
+                trans.setStatus("APPROVED");
                  member.setAccountBalance(member.getAccountBalance()+trans.getAmount());
                     accountBal=member.getAccountBalance();
                  System.out.println("New:"+accountBal);
                  
                  updateAccountBalance(accountBal,member.getUserName());
+                 session.save(trans);
+                  transaction.commit();
+                 }
+
+                 else{
+                    if(trans.getAmount()>=member.getAccountBalance()){
+                        bal = false;
+                       
+                    }
+
+                    else{
+                        trans.setStatus("PENDING");
+                         session.save(trans);
+                  transaction.commit();
+                    }
+
+                    
                  }
 
                 
@@ -49,18 +69,15 @@ public class TransactionDAO {
 //     accountBal = member.getAccountBalance()+trans.getAmount();
 // }
 
-            session.save(trans);
-
-           
-
-
-            transaction.commit();
+            
         }catch(Exception ex){
             if(transaction!=null){
                 transaction.rollback();
             }
             ex.printStackTrace();
         }
+return bal;
+        
     }
 
    

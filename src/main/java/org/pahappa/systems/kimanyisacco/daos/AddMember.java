@@ -8,19 +8,30 @@ import org.hibernate.Transaction;
 import java.util.List;
 public class AddMember {
 
-    public void save(Members member){
+    public boolean save(Members member){
         Transaction transaction = null;
+        boolean isSuccess = false;
         try{
+            
             Session session = SessionConfiguration.getSessionFactory().openSession();
             transaction = session.beginTransaction();
+           Members memberEmail= getMemberByUsername(member.getEmail());
+           if(memberEmail==null){
+            isSuccess= true;
             session.save(member);
             transaction.commit();
+            
+        }
+            
+            
         }catch(Exception ex){
             if(transaction!=null){
                 transaction.rollback();
             }
             ex.printStackTrace();
         }
+
+        return isSuccess;
     }
 
        public List<Members> getAllMembers(){
@@ -59,6 +70,19 @@ public Members getMemberByUsername(String userName){
       
 
 }
+public List<Members> getMembers(){
+        
+        Session session = SessionConfiguration.getSessionFactory().openSession();
+        Criteria criteria = session.createCriteria(Members.class);
+        criteria.add(Restrictions.eq("status", "APPROVED"));
+
+
+        return criteria.list();
+    
+      
+
+}
+
 
 public void updateStatus(String userName){
     Transaction transaction = null;
@@ -88,13 +112,11 @@ public void updateMember(Members updatedDetails){
   Session session = SessionConfiguration.getSessionFactory().openSession();
   transaction = session.beginTransaction();
   Members member = (Members) session.get(Members.class,updatedDetails.getUserName());
-  member.setStatus(updatedDetails.getStatus());
-  member.setFirstName(updatedDetails.getFirstName());
-  member.setLastName(updatedDetails.getLastName());
+ 
   member.setLocation(updatedDetails.getLocation());
-  member.setDateOfBirth(updatedDetails.getDateOfBirth());
+ 
   member.setTelephoneContact(updatedDetails.getTelephoneContact());
-  member.setGender(updatedDetails.getGender());
+ 
   member.setCurrentEmployment(updatedDetails.getCurrentEmployment());
   member.setEmployerName(updatedDetails.getEmployerName());
   member.setEmployerPhoneNumber(updatedDetails.getEmployerPhoneNumber());

@@ -21,7 +21,7 @@ public class MemberImpl  {
    
    AddMember memberDAO = new AddMember();
     
-    public void createMember(Members member) {
+    public boolean createMember(Members member) {
 
 
         if (member.getPassword() == null || member.getPassword().trim().isEmpty()) {
@@ -41,7 +41,9 @@ public class MemberImpl  {
         }
 
         
-        memberDAO.save(member);
+      return  memberDAO.save(member);
+
+        
       
     }
 public static String hashPassword(String plainPassword) {
@@ -155,6 +157,18 @@ String storedPassword = passwordCheck.getPassword();
 
 
  }
+
+
  
+ 
+ public int getJoins(){
+return (memberDAO.getJoinRequests()).size();
+ }
     
+public int getMembers(){
+
+    return (memberDAO.getMembers()).size();
+
+}
+
 }

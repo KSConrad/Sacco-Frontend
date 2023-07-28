@@ -25,7 +25,8 @@
 
       <f:view>
          <div class="w-9 h-auto border-50  surface-ground shadow-1 p-2 border-round-sm">
-            <h:form>
+            <h:form id="form">
+               <p:growl id="growl" showDetail="true" sticky="false" />
 
 
                   <div>
@@ -45,10 +46,13 @@
                   <label for="location">Location</label>
                   <p:inputText id="location" type="text" value="#{registration.member.location}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                </div>
+               
                <div class="field col-12 md:col-3">
                   <label for="date">Date of Birth</label>
-                  <p:inputText id="date" type="date" value="#{registration.member.dateOfBirth}" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto"/>
+                  <p:datePicker  id="date"  value="#{registration.orignaldateOfBirth}" yearNavigator="true" yearRange="#{registration.range}"/>
                </div>
+            
+
                <div class="field col-12">
                   <div class="field">
                      <label for="email">Email</label>
@@ -137,7 +141,7 @@
 
 
             <div class="field col-12 md:col-6">
-               <p:commandButton value="Submit" action="#{registration.doRegistration()}"/>
+               <p:commandButton  id="applybutton"  value="Apply" action="#{registration.doRegistration()}"  update="growl"/>
                 <!-- <p:button value="Back Dasboard" outcome="#{navigation.dashboard}"/> -->
 
               </div>

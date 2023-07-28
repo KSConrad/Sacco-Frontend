@@ -182,6 +182,7 @@ System.out.println(userEmail);
     
         // Retrieve the associated Members entity from the database using the userEmail
         Members m = memberImpl.getMemberByUsername(userEmail);
+        
     
         // Make sure the member exists before proceeding
         if (m != null) {
@@ -192,17 +193,25 @@ System.out.println(userEmail);
             trans.setMember(m); // Set the associated Members entity
             trans.setCreatedOn(formattedDate);
             
-            if (trans.getTransactionType().equals("withdraw")) {
-                trans.setStatus("PENDING");
-            } else {
-                trans.setStatus("APPROVED");
-            }
+            // if (trans.getTransactionType().equals("withdraw")) {
+            //     trans.setStatus("PENDING");
+            // } else {
+            //     trans.setStatus("APPROVED");
+            // }
             
-            transImpl.createTransaction(trans);
+           boolean check = transImpl.createTransaction(trans);
+
+           if(check){
     
             String context = FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
             System.out.println("mybaseurl:" + context);
-            FacesContext.getCurrentInstance().getExternalContext().redirect(context + "/pages/dashboard/Dashboard.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect(context + "/pages/dashboard/Dashboard.xhtml");}
+            else{
+                
+                FacesContext.getCurrentInstance().addMessage("growl",
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Withdraw Request Failed",
+                    " You are requesting to withdraw an amount that is more than your account balance")); 
+            }
         } else {
             
         }

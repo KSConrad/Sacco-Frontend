@@ -55,7 +55,7 @@
          <div class="w-9 h-auto border-50  surface-ground shadow-1 p-2 border-round-sm">
             <h:form>
 
-
+            <p:growl id="growl" showDetail="true" sticky="false" />
                   
 
             <div class="formgrid grid">
@@ -83,7 +83,7 @@
                <p:divider/>
             
             <div class="field col-12 md:col-6">
-               <p:commandButton value="Submit" style="background-color:#4169E1" action="#{dashboard.doTransaction()}"/>
+               <p:commandButton value="Submit" style="background-color:#4169E1" action="#{dashboard.doTransaction()}" update="growl"/>
                 <!-- <p:button value="Back Dasboard" outcome="#{navigation.dashboard}"/> -->
 
               </div>

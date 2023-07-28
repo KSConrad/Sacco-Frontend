@@ -110,7 +110,8 @@
 </ui:insert>
 
 <h:body style ="background-color: rgb(252, 250, 250);">
-   
+  <f:view>
+    <f:event type="preRenderView" listener="#{loginForm.display()}" />
 
     <h:form>
         <div class="card-container">
@@ -128,15 +129,15 @@
             <div class="card--header">
                 <div class="amount">
                     <span class="amount--value">
-                        Ush 20,000,000
+                        #{loginForm.memberNumber}
                     </span>
                     <span class="title">
-                        Account balance
+                         Members
                     </span>
                     
                 </div>
                 
-                <p:graphicImage library="images" name="balance.png" alt="image not there" style="height: 100px; width: 100px;" />
+                <p:graphicImage library="images" name="aboutUspng.png" alt="image not there" style="height: 100px; width: 100px;" />
             </div>
            
         </div>
@@ -144,14 +145,14 @@
             <div class="card--header">
                 <div class="amount">
                     <span class="amount--value">
-                        Ush 2,300,550
+                        #{loginForm.joins}
                     </span>
                     <span class="title">
-                        Recent transaction
+                      Join Requests
                     </span>
                     
                 </div>
-                <p:graphicImage library="images" name="withdraw.png" alt="image not there" style="height: 100px; width: 100px;" />
+                <p:graphicImage library="images" name="joinrequest.png" alt="image not there" style="height: 100px; width: 100px;" />
                 
             </div>
             
@@ -159,12 +160,15 @@
         <div class="payment--card light-purple">
             <div class="card--header">
                 <div class="amount">
+                  <span class="amount--value">
+                    #{loginForm.withdraws}
+                </span>
                     <span class="title">
-                Financial Reports
+                Withdraw Requests
                     </span>
                    
                 </div>
-                <p:graphicImage library="images" name="reports.png" alt="image not there" style="height: 100px; width: 100px;" />
+                <p:graphicImage library="images" name="withdraw.png" alt="image not there" style="height: 100px; width: 100px;" />
                 
             </div>
             
@@ -202,7 +206,8 @@
 
     
 
-    </h:form>              
+    </h:form>  
+  </f:view>            
 </h:body>
   
 

@@ -57,7 +57,7 @@
                </div>
                <div class="field col-12 md:col-6">
                   <label for="city">Telephone Contact</label>
-                  <p:inputText id="city" type="text" value="#{dashboard.memberDetails.telephoneContact}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  <p:inputMask mask="9999999999" id="city" type="text" value="#{dashboard.memberDetails.telephoneContact}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                 
             </div>
                <div class="field col-12 md:col-3">
@@ -88,7 +88,7 @@
 
                   <div class="field col-12 md:col-6 ">
                      <label for="income">Employer Phone Number</label>
-                     <p:inputText id="employerPhoneNumber" type="text" value="#{dashboard.memberDetails.employerPhoneNumber}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                     <p:inputMask mask="9999999999" id="employerPhoneNumber" type="text" value="#{dashboard.memberDetails.employerPhoneNumber}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
                   </div>
                   <div class="field col-12 md:col-6">
                      <label for="option">Job Position</label>
@@ -123,7 +123,7 @@
                   </div>
                   <div class="field col-12 md:col-6 ">
                      <label for="refereePhoneNumber">Phone Number</label>
-                     <p:inputText id="refereePhoneNumber" value="#{dashboard.memberDetails.refereePhoneNumber}" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
+                     <p:inputMask mask="9999999999" id="refereePhoneNumber" value="#{dashboard.memberDetails.refereePhoneNumber}" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" />
                   </div>
 
                   
@@ -154,16 +154,16 @@
                         <div class="formgrid grid">
                            <div class="field col-12 md:col-6 ">
                <label for="originalPassword">Original Password</label> <br/>
-               <p:password id="originalPassword" value="#{dashboard.oldPassword}" />
+               <p:password id="originalPassword" value="#{dashboard.oldPassword}" toggleMask="true" redisplay="true"/>
        </div>
           
        <div class="field col-12 md:col-6 ">
                <label for="newPassword">New Password</label><br/>
-               <p:password id="newPassword" value="#{dashboard.newPassword}" />
+               <p:password id="newPassword" value="#{dashboard.newPassword}" toggleMask="true" redisplay="true"/>
                </div>
                <div class="field col-12 md:col-6 ">
                <label for="confirmPassword">Confirm Password</label><br/>
-               <p:password id="confirmPassword" value="#{dashboard.confirmPassword}" />
+               <p:password id="confirmPassword" value="#{dashboard.confirmPassword}" toggleMask="true" redisplay="true"/>
                </div>
                <!-- Command button to submit the form and change the password -->
                

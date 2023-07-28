@@ -14,12 +14,14 @@ public class TransactionsImpl{
 
     TransactionDAO transDAO = new TransactionDAO();
 
-    public void createTransaction(Transactions trans){
-        transDAO.save(trans);
+    public boolean createTransaction(Transactions trans){
+       return transDAO.save(trans);
    
         
     }
-  
+  public int getWithdraws(){
+    return (transDAO.getWithdrawalRequests()).size();
+  }
     public List<Transactions> getWithdrawalRequests(){
         return transDAO.getWithdrawalRequests();
     }

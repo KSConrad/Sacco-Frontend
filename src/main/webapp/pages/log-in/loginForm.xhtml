@@ -152,6 +152,7 @@ form p a{
                             <p:graphicImage library="images" name="mylogo.png" alt="image not there" style="height: 100px; width: 250px;" />
                             <h1>Login</h1>
                             <h:form>
+                                <p:growl id="growl" showDetail="true" sticky="false" />
                             <div class="input-group">
                                                                
                                     <p:inputText class="input" style="border: 2px solid #4169E1; border-radius: 8px;" styleClass="w-24rem mb-3" placeholder="Email" value="#{loginForm.member.userName}"/>
@@ -169,7 +170,7 @@ form p a{
                             </div>
                             <div class="btn-field">
                                 <!-- <a href="../dashboard/Dashboard.xhtml" class="button" >Log In</a> -->
-                                <p:commandButton value="Log In" style="background-color:#4169E1;" action="#{loginForm.doLogin()}"/>
+                                <p:commandButton value="Log In" style="background-color:#4169E1;" action="#{loginForm.doLogin()}" update="growl"/>
                             </div>
                         </h:form>
                         </div>

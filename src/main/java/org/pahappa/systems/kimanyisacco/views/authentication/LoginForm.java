@@ -32,6 +32,34 @@ private Members memberResult;
 private String formattedBalance;
 private String formattedTransactionType;
 private Transactions recentTransaction;
+private int withdraws;
+private int joins;
+private int memberNumber;
+public int getWithdraws() {
+  return withdraws;
+}
+
+public void setWithdraws(int withdraws) {
+  this.withdraws = withdraws;
+}
+
+public int getJoins() {
+  return joins;
+}
+
+public void setJoins(int joins) {
+  this.joins = joins;
+}
+
+public int getMemberNumber() {
+  return memberNumber;
+}
+
+public void setMemberNumber(int memberNumber) {
+  this.memberNumber = memberNumber;
+}
+
+
 MemberImpl memberImpl = new MemberImpl();
 TransactionsImpl transImpl = new TransactionsImpl();
 
@@ -112,11 +140,17 @@ public Members getMember(){
     System.out.println(member.getUserName());
    memberResult=memberImpl.checkUserCredentials(member.getUserName(),member.getPassword());
    recentTransaction = transImpl.getRecent(member.getUserName());
+   withdraws = transImpl.getWithdraws();
+   joins = memberImpl.getJoins();
+   memberNumber = memberImpl.getMembers();
+
    if(memberResult!=null){
       DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
        formattedBalance = decimalFormat.format(memberResult.getAccountBalance());
       formattedTransactionType =decimalFormat.format(recentTransaction.getAmount()) ;
-System.out.println(formattedBalance );
+
+      
+       System.out.println(formattedBalance );
 
 
 
@@ -126,9 +160,23 @@ System.out.println(formattedBalance );
 
     session.setAttribute("userName", member.getUserName());
 
+    if(member.getUserName().equals("daniella.wwcd@gmail.com")){
+String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
+   System.out.println("mybaseurl:"+context);
+   FacesContext.getCurrentInstance().getExternalContext().redirect(context+"/pages/admin/adminDashboard.xhtml");
+    }
+
+    else{
+
    String context= FacesContext.getCurrentInstance().getExternalContext().getRequestContextPath();
    System.out.println("mybaseurl:"+context);
-   FacesContext.getCurrentInstance().getExternalContext().redirect(context+HyperLinks.dashboard);
+   FacesContext.getCurrentInstance().getExternalContext().redirect(context+HyperLinks.dashboard);}
+   }
+
+   else{
+    FacesContext.getCurrentInstance().addMessage("growl",
+    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login Failed",
+        "The username or password you entered is incorrect. Please try again"));
    }
 
    
@@ -138,7 +186,25 @@ System.out.println(formattedBalance );
 
     
 
+   public void display(){
+
+    FacesContext facesContext = FacesContext.getCurrentInstance();
+        ExternalContext externalContext = facesContext.getExternalContext();
+        HttpSession session = (HttpSession) externalContext.getSession(false);
+        
+        // Retrieve the user's email from the session
+        String userEmail = (String) session.getAttribute("userName");
     
+        Members m = memberImpl.getMemberByUsername(userEmail);
+ recentTransaction = transImpl.getRecent(member.getUserName());
+  DecimalFormat decimalFormat = new DecimalFormat("#,##0.00");
+       formattedBalance = decimalFormat.format(m.getAccountBalance());
+      formattedTransactionType =decimalFormat.format(recentTransaction.getAmount()) ;
+withdraws = transImpl.getWithdraws();
+   joins = memberImpl.getJoins();
+   memberNumber = memberImpl.getMembers();
+  
+   }
 
 
   

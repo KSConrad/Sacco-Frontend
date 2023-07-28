@@ -111,7 +111,8 @@
 
 <h:body style ="background-color: rgb(252, 250, 250);">
    
-
+<f:view>
+  <f:event type="preRenderView" listener="#{loginForm.display()}" />
     <h:form>
         <div class="card-container">
             <ui:insert name="memberHeader">
@@ -202,7 +203,8 @@
 
     
 
-    </h:form>              
+    </h:form> 
+  </f:view>             
 </h:body>
   
 
