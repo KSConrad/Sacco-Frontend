@@ -10,10 +10,16 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name = "navigation")
 @ApplicationScoped //There should be only one instance of the class created for the entire application
 public class Navigation {
+    
 
-    private final String dashboard = "/pages/dashboard/Dashboard.xhtml";
+ private final String dashboard = "/pages/dashboard/Dashboard.xhtml";
 
-    private final String landing = "/pages/landing/Landing.xhtml";
+private final String landing = "/pages/landing/Landing.xhtml";
+ private final String home = "/pages/log-in/home.xhtml";
+ private final String approve = "/pages/admin/approve.xhtml";
+    public String getApprove() {
+    return approve;
+}
 
     public String getDashboard() {
         return dashboard;
@@ -21,6 +27,15 @@ public class Navigation {
 
     public String getLanding() {
         return landing;
+    }
+     public String getHome() {
+        return home;
+    }
+
+    private final int notificationsCount = 3;
+
+    public int getNotificationsCount() {
+        return notificationsCount;
     }
 
 

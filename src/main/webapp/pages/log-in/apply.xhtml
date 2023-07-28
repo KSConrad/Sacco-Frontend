@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+>
+
+<h:head>
+   <f:facet name="first">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+      <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+      <h:outputStylesheet name="primeflex/3.3.1/primeflex.css" library="webjars"/>
+   </f:facet>
+
+
+</h:head>
+
+
+<h:body>
+  <h1 style="text-align: center; color:#4169E1">Application Form</h1>
+   <div class="card flex justify-content-center">
+
+      <f:view>
+         <div class="w-9 h-auto border-50  surface-ground shadow-1 p-2 border-round-sm">
+            <h:form id="form">
+               <p:growl id="growl" showDetail="true" sticky="false" />
+
+
+                  <div>
+                     <h3 style="color:#4169E1">Personal Details</h3>
+                  </div>
+
+            <div class="formgrid grid">
+               <div class="field col-12 md:col-6 ">
+                  <label for="firstname6">First Name</label>
+                  <p:inputText id="firstname6" type="text" value="#{registration.member.firstName}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+               </div>
+               <div class="field col-12 md:col-6 ">
+                  <label for="lastname6">Last Name</label>
+                  <p:inputText id="lastname6" value="#{registration.member.lastName}" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+               </div>
+               <div class="field col-12 md:col-6">
+                  <label for="location">Location</label>
+                  <p:inputText id="location" type="text" value="#{registration.member.location}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+               </div>
+               
+               <div class="field col-12 md:col-3">
+                  <label for="date">Date of Birth</label>
+                  <p:datePicker  id="date"  value="#{registration.orignaldateOfBirth}" yearNavigator="true" yearRange="#{registration.range}"/>
+               </div>
+            
+
+               <div class="field col-12">
+                  <div class="field">
+                     <label for="email">Email</label>
+                     <p:inputText id="email" type="text" value="#{registration.member.email}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+               </div>
+               <div class="field col-12 md:col-6">
+                  <label for="city">Telephone Contact</label>
+                  <p:inputText id="city" type="text" value="#{registration.member.telephoneContact}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+               </div>
+              
+
+               <div class="field col-12 md:col-3">
+                  <h:outputLabel for="state" value="Gender"/>
+                  <h:selectOneMenu id="state" value="#{registration.member.gender}" class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary" style="appearance: auto">
+                     <f:selectItem itemValue="Male" itemLabel="Male"/>
+                     <f:selectItem itemValue="Female" itemLabel="Female"/>
+        
+                  </h:selectOneMenu>
+               </div>
+
+
+
+            </div>
+
+            <p:divider/>
+            <div>
+               <h3 style="color:#4169E1">Employment Details</h3>
+            </div>
+
+               <div class="formgrid grid">
+                  <div class="field col-12 md:col-6 ">
+                     <label for="bank">Current Employment</label>
+                     <p:inputText id="currentEmployment" type="text" value="#{registration.member.currentEmployment}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+                  <div class="field col-12 md:col-6 ">
+                     <label for="employerName">Employer Name</label>
+                     <p:inputText id="employerName" type="text" value="#{registration.member.employerName}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+
+                  <div class="field col-12 md:col-6 ">
+                     <label for="income">Employer Phone Number</label>
+                     <p:inputText id="employerPhoneNumber" type="text" value="#{registration.member.employerPhoneNumber}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+                  <div class="field col-12 md:col-6">
+                     <label for="option">Job Position</label>
+                     <p:inputText  id="position" type="text" value="#{registration.member.jobPosition}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+
+                  <h3 style="color:#4169E1">Income Details</h3>
+                </div>
+    
+                   <div class="formgrid grid">
+                     
+                      <div class="field col-12 md:col-6 ">
+                         <label for="bank">Monthly Salary</label>
+                         <p:inputText id="bank" type="text" value="#{registration.member.monthlySalary}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                      </div>
+                      <div class="field col-12 md:col-6 ">
+                         <label for="account">Sources of Income</label>
+                         <p:inputText id="account" type="text" value="#{registration.member.sourcesOfIncome}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                      </div>
+    
+                      
+                      <h3 style="color:#4169E1">Referees</h3>
+            </div>
+
+               <div class="formgrid grid">
+                  <div class="field col-12 md:col-6 ">
+                     <label for="bank">Name</label>
+                     <p:inputText id="refereeName" value="#{registration.member.refereeName}" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+                  <div class="field col-12 md:col-6 ">
+                     <label for="refereePhoneNumber">Phone Number</label>
+                     <p:inputText id="refereePhoneNumber" value="#{registration.member.refereePhoneNumber}" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>
+
+                  
+                  <div class="field col-12 md:col-3">
+                     <label for="option">Job Position</label>
+                     <p:inputText id="refereePosition" type="text" value="#{registration.member.jobPosition}" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"/>
+                  </div>    
+
+               
+            </div>
+
+
+            <div class="field col-12 md:col-6">
+               <p:commandButton  id="applybutton"  value="Apply" action="#{registration.doRegistration()}"  update="growl"/>
+                <!-- <p:button value="Back Dasboard" outcome="#{navigation.dashboard}"/> -->
+
+              </div>
+         </h:form>
+         </div>
+
+      </f:view>
+   </div>
+
+
+</h:body>
+
+</html>

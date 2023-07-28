@@ -106,18 +106,18 @@
 </h:head>
 <ui:insert name="memberHeader">
   <!-- Include the header content -->
-  <ui:include src="/template/memberHeader.xhtml" />
+  <ui:include src="/template/adminHeader.xhtml" />
 </ui:insert>
 
 <h:body style ="background-color: rgb(252, 250, 250);">
-   
-<f:view>
-  <f:event type="preRenderView" listener="#{loginForm.display()}" />
+  <f:view>
+    <f:event type="preRenderView" listener="#{loginForm.display()}" />
+
     <h:form>
         <div class="card-container">
             <ui:insert name="memberHeader">
                 <!-- Include the header content -->
-                <ui:include src="/template/loginSideBar1.xhtml" />
+                <ui:include src="/template/adminSidebar.xhtml" />
               </ui:insert>  
 
 <p:card style="width: 76rem; height: 35rem; border-radius: 8%;position:fixed;top:120px;right:8px;">
@@ -129,15 +129,15 @@
             <div class="card--header">
                 <div class="amount">
                     <span class="amount--value">
-                     UGX #{loginForm.formattedBalance} 
+                        #{loginForm.memberNumber}
                     </span>
                     <span class="title">
-                        Account balance
+                         Members
                     </span>
                     
                 </div>
                 
-                <p:graphicImage library="images" name="balance.png" alt="image not there" style="height: 100px; width: 100px;" />
+                <p:graphicImage library="images" name="aboutUspng.png" alt="image not there" style="height: 100px; width: 100px;" />
             </div>
            
         </div>
@@ -145,14 +145,14 @@
             <div class="card--header">
                 <div class="amount">
                     <span class="amount--value">
-                      #{loginForm.recentTransaction.transactionType}:<br/>UGX#{loginForm.formattedTransactionType}
+                        #{loginForm.joins}
                     </span>
                     <span class="title">
-                        Recent transaction 
+                      Join Requests
                     </span>
                     
                 </div>
-                <p:graphicImage library="images" name="withdraw.png" alt="image not there" style="height: 100px; width: 100px;" />
+                <p:graphicImage library="images" name="joinrequest.png" alt="image not there" style="height: 100px; width: 100px;" />
                 
             </div>
             
@@ -160,12 +160,15 @@
         <div class="payment--card light-purple">
             <div class="card--header">
                 <div class="amount">
+                  <span class="amount--value">
+                    #{loginForm.withdraws}
+                </span>
                     <span class="title">
-                Financial Reports
+                Withdraw Requests
                     </span>
                    
                 </div>
-                <p:graphicImage library="images" name="reports.png" alt="image not there" style="height: 100px; width: 100px;" />
+                <p:graphicImage library="images" name="withdraw.png" alt="image not there" style="height: 100px; width: 100px;" />
                 
             </div>
             
@@ -203,8 +206,8 @@
 
     
 
-    </h:form> 
-  </f:view>             
+    </h:form>  
+  </f:view>            
 </h:body>
   
 

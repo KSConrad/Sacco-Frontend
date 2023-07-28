@@ -6,9 +6,21 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
-
 >
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+<h:head>
+    <h:outputStylesheet name="css/App.css"/>
+      
+</h:head>
+
+<h:body>
+    <p:card class="navbar">
+        <p:graphicImage library="images"  name="mylogo.png" alt="image not there" class="logoImage"/>
+        <span class="span">
+            <div class="div1">
+                <p:graphicImage library="images" name="logIn.png" alt="image not there" class="logIn" />
+                <a href="loginForm.xhtml" class="button-like-text" >Log In</a>
+            </div>
+        </span>
+    </p:card>
+    </h:body>
 </html>
